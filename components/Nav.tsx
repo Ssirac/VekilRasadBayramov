@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLang } from "./LanguageProvider";
 import { site } from "@/lib/site";
+import { Logo } from "./Logo";
 import { Menu, Close } from "./Icons";
 
 export function Nav() {
@@ -46,12 +47,8 @@ export function Nav() {
         aria-label="Əsas naviqasiya"
         className="mx-auto flex h-16 max-w-content items-center justify-between px-5 sm:px-8 lg:px-12"
       >
-        <Link
-          href="/#top"
-          className="font-serif text-lg tracking-tight text-ink"
-          onClick={() => setOpen(false)}
-        >
-          {site.name}
+        <Link href="/#top" aria-label={site.name} onClick={() => setOpen(false)}>
+          <Logo />
         </Link>
 
         {/* Desktop */}

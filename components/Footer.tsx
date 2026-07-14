@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLang } from "./LanguageProvider";
 import { site } from "@/lib/site";
+import { Logo } from "./Logo";
 
 export function Footer() {
   const { t } = useLang();
@@ -11,6 +12,8 @@ export function Footer() {
   return (
     <footer className="border-t border-ink/15 py-16 sm:py-20">
       <div className="mx-auto max-w-content px-5 sm:px-8 lg:px-12">
+        <Logo wordmark={false} className="mb-10" />
+
         {/* One bold serif line */}
         <p className="max-w-3xl text-balance font-serif leading-[1.05] text-ink [font-size:clamp(2rem,5vw,3.5rem)]">
           {t.footer.tagline}
