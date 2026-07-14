@@ -80,8 +80,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="az" className={`${serif.variable} ${sans.variable}`}>
+    <html
+      lang="az"
+      suppressHydrationWarning
+      className={`${serif.variable} ${sans.variable}`}
+    >
       <body>
+        {/* Apply the saved/system theme before paint to avoid a flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+          }}
+        />
         <LanguageProvider>
           <InkCursor />
           <Nav />

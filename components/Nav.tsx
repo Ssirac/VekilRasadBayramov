@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLang } from "./LanguageProvider";
 import { site } from "@/lib/site";
 import { Logo } from "./Logo";
+import { ThemeToggle } from "./ThemeToggle";
 import { Menu, Close } from "./Icons";
 
 export function Nav() {
@@ -63,7 +64,7 @@ export function Nav() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-5 pl-1">
+          <div className="flex items-center gap-4 pl-1">
             <button
               type="button"
               onClick={toggle}
@@ -72,6 +73,7 @@ export function Nav() {
             >
               {lang === "az" ? "AZ / EN" : "EN / AZ"}
             </button>
+            <ThemeToggle />
             <a
               href={site.phoneTel}
               className="nav-link text-sm tnum text-ink"
@@ -115,14 +117,17 @@ export function Nav() {
               <a href={site.phoneTel} className="tnum text-lg text-ink">
                 {site.phoneDisplay}
               </a>
-              <button
-                type="button"
-                onClick={toggle}
-                className="eyebrow text-ink/60"
-                aria-label={lang === "az" ? "Switch to English" : "Azərbaycan dilinə keç"}
-              >
-                {lang === "az" ? "AZ / EN" : "EN / AZ"}
-              </button>
+              <div className="flex items-center gap-4">
+                <button
+                  type="button"
+                  onClick={toggle}
+                  className="eyebrow text-ink/60"
+                  aria-label={lang === "az" ? "Switch to English" : "Azərbaycan dilinə keç"}
+                >
+                  {lang === "az" ? "AZ / EN" : "EN / AZ"}
+                </button>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </div>

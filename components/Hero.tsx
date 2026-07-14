@@ -5,6 +5,7 @@ import { useLang } from "./LanguageProvider";
 import { site } from "@/lib/site";
 import { Portrait } from "./Portrait";
 import { KineticName } from "./KineticName";
+import { LogoEmblem } from "./LogoEmblem";
 import { ArrowRight } from "./Icons";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -77,9 +78,11 @@ export function Hero() {
               transition={{ duration: 1, ease: EASE, delay: 0.35 }}
             >
               <Portrait priority />
-              <span className="eyebrow absolute -bottom-6 left-0 hidden text-ink/50 sm:block">
-                {site.bureauUpper}
-              </span>
+              {/* Floating 3D gold seal overlapping the portrait's lower-left */}
+              <LogoEmblem
+                size={120}
+                className="absolute -bottom-8 -left-8 z-10"
+              />
             </motion.div>
           </div>
         </div>

@@ -15,6 +15,15 @@
   --paper: rgb(var(--paper-rgb));
   --oxblood: rgb(var(--oxblood-rgb));
   --hairline: rgb(var(--ink-rgb) / 0.15);
+  --gold: #c8a24a;
+}
+
+/* Dark theme — swap the ink/paper channels so every bg-paper / text-ink flips.
+   --ink (text), --paper (surface), --hairline all re-resolve automatically. */
+:root[data-theme="dark"] {
+  --ink-rgb: 238 233 223; /* warm light text */
+  --paper-rgb: 20 19 18; /* warm near-black surface */
+  --oxblood-rgb: 201 108 86; /* lifted oxblood for contrast on dark */
 }
 
 /* ============================================================
@@ -40,6 +49,14 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    transition: background-color 400ms ease, color 400ms ease;
+  }
+
+  /* Smooth the theme flip on major surfaces */
+  header,
+  section,
+  footer {
+    transition: background-color 400ms ease, border-color 400ms ease;
   }
 
   ::selection {
@@ -220,6 +237,25 @@
 .mask-line {
   display: block;
   overflow: hidden;
+}
+
+/* Ambient 3D float for the gold logo emblem */
+@keyframes emblem-float {
+  0%,
+  100% {
+    transform: translateY(0) rotateZ(-1.2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateZ(1.2deg);
+  }
+}
+.emblem-float {
+  animation: emblem-float 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .emblem-float {
+    animation: none;
+  }
 }
 
 /* Trailing ink cursor (fine pointers only; toggled on by JS) */

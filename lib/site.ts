@@ -26,6 +26,10 @@ export const site = {
   portrait: "/images/resad-bayramov.png",
   portraitAlt: "Rəşad Bayramov — vəkil, PRESEDENT Vəkil Bürosu, Bakı",
   initials: "RB",
+
+  // TODO(client): save the gold logo here as logo.png (falls back to an RB mark).
+  logo: "/images/logo.png",
+  logoAlt: "Vəkil Rəşad Bayramov — logo",
 } as const;
 
 export type Lang = "az" | "en";
