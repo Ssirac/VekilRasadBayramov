@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useLang } from "./LanguageProvider";
 import { site } from "@/lib/site";
 import { Portrait } from "./Portrait";
+import { KineticName } from "./KineticName";
 import { ArrowRight } from "./Icons";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -18,13 +19,6 @@ export function Hero() {
     initial: reduce ? false : { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.7, ease: EASE, delay },
-  });
-
-  // Name lines rise from behind a mask.
-  const line = (delay: number) => ({
-    initial: reduce ? false : { y: "110%" },
-    animate: { y: "0%" },
-    transition: { duration: 0.9, ease: EASE, delay },
   });
 
   return (
@@ -45,18 +39,7 @@ export function Hero() {
               {t.hero.eyebrow}
             </motion.p>
 
-            <h1 className="mt-6 font-serif leading-[0.92] tracking-[-0.02em] text-ink [font-size:clamp(2.75rem,8vw,7.5rem)]">
-              <span className="mask-line">
-                <motion.span className="block" {...line(0.24)}>
-                  Rəşad
-                </motion.span>
-              </span>
-              <span className="mask-line">
-                <motion.span className="block" {...line(0.36)}>
-                  Bayramov
-                </motion.span>
-              </span>
-            </h1>
+            <KineticName />
 
             <motion.div className="mt-7 flex items-center gap-4" {...rise(0.52)}>
               <span className="hairline hidden max-w-[4rem] flex-1 sm:block" />

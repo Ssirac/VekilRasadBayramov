@@ -4,15 +4,16 @@ import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { InkCursor } from "@/components/InkCursor";
 import { site } from "@/lib/site";
 
 // Self-hosted at build time by next/font. latin-ext is REQUIRED for
-// Azerbaijani glyphs (ə ğ ş ç ö ü ı).
+// Azerbaijani glyphs (ə ğ ş ç ö ü ı). Loaded as a VARIABLE font (no fixed
+// weight) so the hero name can animate its 'wght' axis under the cursor.
 const serif = Fraunces({
   subsets: ["latin", "latin-ext"],
   variable: "--font-serif",
   display: "swap",
-  weight: ["400", "500", "600"],
 });
 
 const sans = Instrument_Sans({
@@ -82,6 +83,7 @@ export default function RootLayout({
     <html lang="az" className={`${serif.variable} ${sans.variable}`}>
       <body>
         <LanguageProvider>
+          <InkCursor />
           <Nav />
           <main>{children}</main>
           <Footer />

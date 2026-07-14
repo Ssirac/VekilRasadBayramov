@@ -235,6 +235,32 @@
   overflow: hidden;
 }
 
+/* Trailing ink cursor (fine pointers only; toggled on by JS) */
+.ink-cursor {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--oxblood);
+  border: 1.5px solid var(--oxblood);
+  pointer-events: none;
+  z-index: 9999;
+  transition: background-color 250ms ease, opacity 250ms ease;
+}
+/* Over interactive elements: become a hollow ring */
+.ink-cursor[data-hover="1"] {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink-cursor {
+    display: none !important;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
