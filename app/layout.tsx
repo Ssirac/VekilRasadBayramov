@@ -22,10 +22,13 @@ const sans = Instrument_Sans({
   weight: ["400", "500", "600"],
 });
 
-// Current deployment target (GitHub Pages). Trailing slash keeps the repo
-// sub-path when resolving relative OG image URLs.
+// Canonical origin per deployment. GitHub Pages build sets PAGES_BASE_PATH;
+// otherwise this is the Vercel deployment. Trailing slash keeps any sub-path
+// when resolving the relative OG image URL.
 // TODO(client): switch to the final custom domain (e.g. https://presedent.az/).
-const SITE_URL = "https://ssirac.github.io/VekilRasadBayramov/";
+const SITE_URL = process.env.PAGES_BASE_PATH
+  ? "https://ssirac.github.io/VekilRasadBayramov/"
+  : "https://vekilrasadbayramov.vercel.app/";
 // OG/Twitter image resolved relative to SITE_URL (no leading slash → keeps sub-path).
 const OG_IMAGE = "images/resad-bayramov.png";
 
