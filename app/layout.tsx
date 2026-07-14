@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { InkCursor } from "@/components/InkCursor";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { site } from "@/lib/site";
 
 // Self-hosted at build time by next/font. latin-ext is REQUIRED for
@@ -97,6 +98,7 @@ export default function RootLayout({
           <Nav />
           <main>{children}</main>
           <Footer />
+          <FloatingWhatsApp />
         </LanguageProvider>
       </body>
     </html>

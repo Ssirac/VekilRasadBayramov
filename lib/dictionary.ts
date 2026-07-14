@@ -28,7 +28,7 @@ export const dictionary = {
       index: "01",
       title: "Haqqında",
       pull: "Hüquq mücərrəd normalar deyil — hər işin arxasında konkret insan və onun taleyi dayanır.",
-      p1: "Rəşad Bayramov Bakı Dövlət Universitetinin hüquq fakültəsini bitirib və Azərbaycan Vəkillər Kollegiyasının üzvüdür. PRESEDENT Vəkil Bürosunun vəkili kimi 12 ildir fiziki və hüquqi şəxsləri həm məhkəmələrdə, həm də danışıqlar masasında təmsil edir.",
+      p1: "Rəşad Bayramov Azərbaycan Vəkillər Kollegiyasının üzvüdür. PRESEDENT Vəkil Bürosunun vəkili kimi 12 ildir fiziki və hüquqi şəxsləri həm məhkəmələrdə, həm də danışıqlar masasında təmsil edir.",
       p2: "Praktikası həm məhkəmə çəkişmələrini, həm də məhkəmədənkənar həll yollarını əhatə edir. Yanaşması sadədir: işin faktlarını dəqiq öyrənmək, riskləri açıq izah etmək və müştəri üçün ən qısa, ən az itki ilə nəticəyə aparan yolu seçmək.",
     },
     practice: {
@@ -186,7 +186,7 @@ export const dictionary = {
       index: "01",
       title: "About",
       pull: "Law is not abstract rules — behind every case stands a real person and what is at stake for them.",
-      p1: "Rəşad Bayramov graduated from the Faculty of Law at Baku State University and is a member of the Azerbaijan Bar Association. As an attorney at PRESEDENT Law Bureau, he has represented individuals and companies both in court and at the negotiating table for 12 years.",
+      p1: "Rəşad Bayramov is a member of the Azerbaijan Bar Association. As an attorney at PRESEDENT Law Bureau, he has represented individuals and companies both in court and at the negotiating table for 12 years.",
       p2: "His practice spans litigation as well as out-of-court resolutions. The approach is simple: understand the facts precisely, explain the risks plainly, and choose the shortest path to a result with the least possible loss for the client.",
     },
     practice: {
