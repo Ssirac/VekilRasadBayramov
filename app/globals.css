@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — Legal editorial
+   ============================================================ */
+:root {
+  /* RGB channels power Tailwind's <alpha-value> opacity utilities */
+  --ink-rgb: 20 19 18; /* #141312 warm near-black */
+  --paper-rgb: 244 241 234; /* #F4F1EA warm off-white */
+  --oxblood-rgb: 122 30 30; /* #7A1E1E accent, used < 5% */
+
+  --ink: rgb(var(--ink-rgb));
+  --paper: rgb(var(--paper-rgb));
+  --oxblood: rgb(var(--oxblood-rgb));
+  --hairline: rgb(var(--ink-rgb) / 0.15);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: theme("fontFamily.sans");
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--oxblood);
+    color: var(--paper);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: theme("fontFamily.serif");
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ============================================================
+   COMPONENT / UTILITY CLASSES
+   ============================================================ */
+@layer components {
+  /* Small-caps eyebrow label */
+  .eyebrow {
+    font-family: theme("fontFamily.sans");
+    font-size: 0.6875rem; /* 11px */
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  /* Section number "01" */
+  .section-index {
+    font-family: theme("fontFamily.sans");
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Structural hairline rule (newspaper divider) */
+  .hairline {
+    border: 0;
+    border-top: 1px solid var(--hairline);
+    width: 100%;
+  }
+
+  /* Tabular figures for stats / numerals */
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* Text link with underline that draws left-to-right on hover */
+  .link-draw {
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 380ms cubic-bezier(0.22, 1, 0.36, 1);
+    padding-bottom: 1px;
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Nav link — persistent hairline that fills on hover / active */
+  .nav-link {
+    position: relative;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    padding-bottom: 2px;
+  }
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* ---- Portrait duotone treatment (CSS only, no edited asset) ---- */
+  .portrait-frame {
+    position: relative;
+    aspect-ratio: 1 / 1; /* reserve exact ratio → zero CLS */
+    overflow: hidden;
+    background-color: var(--ink);
+  }
+  .portrait-frame img {
+    filter: grayscale(1) contrast(1.05) brightness(1.02);
+    transition: filter 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    object-position: 50% 20%; /* face sits in the upper third */
+  }
+  .portrait-frame:hover img {
+    filter: grayscale(0.6) contrast(1.05) brightness(1.02);
+  }
+  .portrait-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgb(var(--ink-rgb));
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+
+  /* Fallback ink block with serif initials when the photo is missing */
+  .portrait-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ink);
+    color: var(--paper);
+    font-family: theme("fontFamily.serif");
+    font-size: clamp(4rem, 12vw, 8rem);
+    letter-spacing: 0.02em;
+  }
+
+  /* Vertical rotated edge label */
+  .vertical-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  /* ---- Latin-maxim marquee ---- */
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    /* Fade both edges into the paper */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+  .marquee-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee-scroll 42s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-sep {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 1.75rem;
+    transform: rotate(45deg);
+    background: var(--oxblood);
+    flex: none;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Line-mask reveal for the hero name */
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* Respect reduced motion — neutralise transitions that convey reveal/motion */
+@media (prefers-reduced-motion: reduce) {
+  .portrait-frame img,
+  .link-draw,
+  .nav-link {
+    transition: none !important;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+}
