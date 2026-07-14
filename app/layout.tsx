@@ -22,8 +22,12 @@ const sans = Instrument_Sans({
   weight: ["400", "500", "600"],
 });
 
-// TODO(client): set to the final production domain.
-const SITE_URL = "https://www.presedent.az";
+// Current deployment target (GitHub Pages). Trailing slash keeps the repo
+// sub-path when resolving relative OG image URLs.
+// TODO(client): switch to the final custom domain (e.g. https://presedent.az/).
+const SITE_URL = "https://ssirac.github.io/VekilRasadBayramov/";
+// OG/Twitter image resolved relative to SITE_URL (no leading slash → keeps sub-path).
+const OG_IMAGE = "images/resad-bayramov.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -49,7 +53,7 @@ export const metadata: Metadata = {
     siteName: site.bureau,
     images: [
       {
-        url: site.portrait,
+        url: OG_IMAGE,
         width: 640,
         height: 640,
         alt: site.portraitAlt,
@@ -61,7 +65,7 @@ export const metadata: Metadata = {
     title: "Rəşad Bayramov — Vəkil | PRESEDENT Vəkil Bürosu, Bakı",
     description:
       "Mülki, cinayət, korporativ, ailə və əmək hüququ üzrə 12+ il təcrübə.",
-    images: [site.portrait],
+    images: [OG_IMAGE],
   },
   robots: { index: true, follow: true },
 };
