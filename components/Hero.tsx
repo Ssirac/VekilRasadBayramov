@@ -80,8 +80,8 @@ export function Hero() {
               <Portrait priority />
               {/* Floating 3D gold seal overlapping the portrait's lower-left */}
               <LogoEmblem
-                size={120}
-                className="absolute -bottom-8 -left-8 z-10"
+                size={150}
+                className="absolute -bottom-10 -left-10 z-10"
               />
             </motion.div>
           </div>

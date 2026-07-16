@@ -49,7 +49,7 @@ export function Nav() {
         className="mx-auto flex h-16 max-w-content items-center justify-between px-5 sm:px-8 lg:px-12"
       >
         <Link href="/#top" aria-label={site.name} onClick={() => setOpen(false)}>
-          <Logo />
+          <Logo size={56} />
         </Link>
 
         {/* Desktop */}

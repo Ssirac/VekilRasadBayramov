@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer className="border-t border-ink/15 py-16 sm:py-20">
       <div className="mx-auto max-w-content px-5 sm:px-8 lg:px-12">
-        <Logo wordmark={false} size={72} className="mb-10" />
+        <Logo wordmark={false} size={96} className="mb-10" />
 
         {/* One bold serif line */}
         <p className="max-w-3xl text-balance font-serif leading-[1.05] text-ink [font-size:clamp(2rem,5vw,3.5rem)]">
